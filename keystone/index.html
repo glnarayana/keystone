@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>KeyStone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="lib/es6-shim.min.js"></script>
+    <script src="lib/system.src.js"></script>
+    <script src="lib/system-polyfills.js"></script>
+    <script src="lib/angular2-polyfills.js"></script>
+    <script src="lib/zone.js"></script>
+    <script src="lib/Reflect.js"></script>
+
+    <script src="/lib/Rx.js"></script>
+    <script src="/lib/angular2.dev.js"></script>
+<script>
+System.config({
+  packages:{
+    js:{
+      format:'register',
+      defaultExtension: 'js'
+    }
+  }
+});
+//System.import('js/keystone/boot');//.then(null, console.error.bind(console));
+</script>
+</head>
+
+<body>
+    <app-root>Loading...</app-root>
+    <h1>Testing!...</h1>
+    <!-- <script>
+        System.import('system-config.js').then(function() {
+            System.import('main');
+        }).catch(console.error.bind(console));
+    </script> -->
+</body>
+
+</html>
