@@ -1,4 +1,4 @@
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {KeystoneApp} from './home.component';
+import {KeystoneApp} from './keystone.component';
 
 bootstrap(KeystoneApp);
