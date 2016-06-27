@@ -15,27 +15,49 @@ gulp.task('clean', function() {
     return del(buildSrc + '/**/*');
 });
 
+// copy html assets
+gulp.task('copy:html', ['clean'], function() {
+    return gulp.src(['keystone/src/**/*.html'])
+        .pipe(gulp.dest(buildSrc + '/js'))
+});
+
 // copy static assets - i.e. non TypeScript compiled source
-gulp.task('copy:assets', ['clean'], function() {
-    return gulp.src(['keystone/src/**/*', 'keystone/index.html', 'keystone/resources/css/*.css', '!keystone/src/**/*.ts'], {
+gulp.task('copy:assets', ['copy:html'], function() {
+    return gulp.src(['keystone/index.html', 'keystone/systemjs.config.js', 'keystone/resources/css/*.css', '!keystone/src/**/*.ts'], {
             base: 'keystone'
         })
         .pipe(gulp.dest(buildSrc))
 });
 
 // copy dependencies
-gulp.task('copy:libs', ['clean'], function() {
+
+gulp.task('angular2:libs', ['clean'], function() {
     return gulp.src([
-            'node_modules/angular2/bundles/angular2-polyfills.js',
+            'node_modules/@angular/**/*.js',
+        ])
+        .pipe(gulp.dest(buildSrc + '/lib/@angular'))
+});
+
+gulp.task('rxjs:libs', ['angular2:libs'], function() {
+    return gulp.src([
+            'node_modules/rxjs/**/*.js',
+        ])
+        .pipe(gulp.dest(buildSrc + '/lib/rxjs'))
+});
+
+gulp.task('copy:libs', ['rxjs:libs'], function() {
+    return gulp.src([
             'node_modules/systemjs/dist/system.src.js',
             'node_modules/rxjs/bundles/Rx.js',
             'node_modules/angular2/bundles/angular2.dev.js',
+            'node_modules/angular2/bundles/router.dev.js',
             'node_modules/angular2/bundles/router.dev.js',
             'node_modules/node-uuid/uuid.js',
             'node_modules/immutable/dist/immutable.js',
             'node_modules/es6-shim/es6-shim.min.js',
             'node_modules/systemjs/dist/system-polyfills.js',
             'node_modules/zone.js/dist/zone.js',
+            'node_modules/core-js/client/shim.min.js',
             'node_modules/reflect-metadata/Reflect.js'
         ])
         .pipe(gulp.dest(buildSrc + '/lib'))

@@ -1,7 +1,7 @@
 {
     "compileOnSave": false,
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
         "sourceMap": true,
@@ -11,7 +11,7 @@
         "noImplicitAny": false
     },
     "files": [
-        "keystone/src/boot.ts"
+        "keystone/src/**/*.ts"
     ],
     "exclude": [
         "node_modules"

@@ -5,36 +5,24 @@
     <title>KeyStone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="lib/es6-shim.min.js"></script>
-    <script src="lib/system.src.js"></script>
-    <script src="lib/system-polyfills.js"></script>
-    <script src="lib/angular2-polyfills.js"></script>
+    <link rel="stylesheet" href="resources/css/styles.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="lib/shim.min.js"></script>
+
     <script src="lib/zone.js"></script>
     <script src="lib/Reflect.js"></script>
+    <script src="lib/system.src.js"></script>
 
-    <script src="/lib/Rx.js"></script>
-    <script src="/lib/angular2.dev.js"></script>
-<script>
-System.config({
-  packages:{
-    js:{
-      format:'register',
-      defaultExtension: 'js'
-    }
-  }
-});
-//System.import('js/keystone/boot');//.then(null, console.error.bind(console));
-</script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('keystone').catch(function(err){ console.error(err); });
+    </script>
 </head>
 
 <body>
-    <app-root>Loading...</app-root>
+    <keystone-app>Loading...</keystone-app>
     <h1>Testing!...</h1>
-    <!-- <script>
-        System.import('system-config.js').then(function() {
-            System.import('main');
-        }).catch(console.error.bind(console));
-    </script> -->
 </body>
 
 </html>
