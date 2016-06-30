@@ -1,0 +1,13 @@
+.ks-header {
+    height: 40px;
+    background-color: rgb(15, 195, 189);
+    span {
+        height: 100%;
+        margin-left: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        color: rgb(103, 49, 59);
+        display: flex;
+        align-items: center;
+    }
+}
